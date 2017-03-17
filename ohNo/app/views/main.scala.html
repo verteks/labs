@@ -1,0 +1,46 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("bootstrap/css/bootstrap.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")">
+        @*todo Подключить аналогично стиль bootstrap.css и стиль main.css*@
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/knockout.js")" type="text/javascript"></script>
+        @*todo Подключить аналогично скрипт knockout.js*@
+
+        <!--необходим, чтобы работали механизмы реверсной маршрутизации. Добавляет объект jsRoutes -->
+        <script type="text/javascript" src="@routes.Application.jsRoutes"></script>
+    </head>
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="/">Записная книжка</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            @content
+        </div><!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+    </body>
+</html>

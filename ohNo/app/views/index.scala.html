@@ -1,0 +1,37 @@
+@(noteForm: Form[Note])
+
+@import bootstrap._
+
+@main("Записная книжка") {
+    <div data-bind="notesViewModel">
+    <h1>Ваши контакты</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr><th>Имя</th><th>Домашний телефон</th><th>Мобильный телефон</th><th></th></tr>
+            </thead>
+            <tbody data-bind="foreach: notes">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: cellPhone"></td>
+                <td data-bind="text: homePhone"></td>
+                <td>
+                    <a href="#" data-bind="click: $root.editNote" class="btn btn-default">Редактировать</a>
+                    <a href="#" data-bind="click: $root.removeNote" class="btn btn-danger">Удалить</a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+        <hr/>
+    </div>
+
+    <form>
+        @text(noteForm("name"),  "ФИО", "ФИО контакта", "", "value: name")
+        @text(noteForm("cellPhone"), "Мобильный телефон", "Введите телефон, 10 цифр", "" , "value: cellPhone")
+        @text(noteForm("homePhone"), "Домашний телефон", "введите телефон", "", "value: homePhone")
+        <button type="submit" value="submit" class = "btn btn-default" data-bind="click: $root.saveNote">Сохранить</button>
+    </form>
+
+    <script language = "javascript" lang="javascript" src ='@routes.Assets.at("javascripts/app.js")'></script>
+
+}
